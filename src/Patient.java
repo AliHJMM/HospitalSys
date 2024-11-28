@@ -114,6 +114,7 @@ public class Patient {
         }
     }
 
+
     // printServicesReceived method to display services received  
     public void printServicesReceived() {
         System.out.println("Services Received by " + firstName + " " + lastName + ":");
@@ -136,3 +137,4 @@ public class Patient {
                 "\nEmail: " + email;
     }
 }
+
