@@ -54,20 +54,14 @@ public class Service {
     }
 
     // Equals method to compare two services
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
+    public boolean equalsService(Service otherService) {
+        if (otherService == null) {
             return false;
         }
-        Service service = (Service) obj;
-        return serviceId.equals(service.serviceId);
+        return this.serviceId.equals(otherService.serviceId);
     }
 
     // toString method for displaying service details
-    @Override
     public String toString() {
         return "Service ID: " + serviceId +
                 "\nService Name: " + serviceName +

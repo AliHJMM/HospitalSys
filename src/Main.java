@@ -87,7 +87,6 @@ public class Main {
         }
     }
 
-
     public static String readEmail(Scanner scanner, String prompt) {
         String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,}$";
         Pattern pattern = Pattern.compile(emailRegex);
@@ -101,7 +100,6 @@ public class Main {
             }
         }
     }
-
 
     public static String readName(Scanner scanner, String prompt) {
         String nameRegex = "^[a-zA-Z]+$";
@@ -134,8 +132,12 @@ public class Main {
             System.out.println("7. Add Service to Patient");
             System.out.println("8. View All Patients");
             System.out.println("9. View All Services");
-            System.out.println("10. Exit");
-            int choice = readInt(scanner, "Please select an option (1-10): ", 1, 10);
+            System.out.println("10. Count Total Patients");
+            System.out.println("11. Count Total Services");
+            System.out.println("12. View Total Revenue");
+            System.out.println("13. Reset System");
+            System.out.println("14. Exit");
+            int choice = readInt(scanner, "Please select an option (1-14): ", 1, 14);
 
             switch (choice) {
                 case 1:
@@ -239,13 +241,40 @@ public class Main {
                     break;
 
                 case 10:
+                    // Count Total Patients
+                    System.out.println("Total number of patients: " + hospital.getTotalPatients());
+                    break;
+
+                case 11:
+                    // Count Total Services
+                    System.out.println("Total number of services: " + hospital.getTotalServices());
+                    break;
+
+                case 12:
+                    // View Total Revenue
+                    System.out.println("Total revenue generated: $" + hospital.calculateTotalRevenue());
+                    break;
+
+                case 13:
+                    // Reset System
+                    System.out.print("Are you sure you want to reset the system? (yes/no): ");
+                    String confirm = scanner.nextLine().trim().toLowerCase();
+                    if (confirm.equals("yes")) {
+                        hospital.resetSystem();
+                        System.out.println("System has been reset.");
+                    } else {
+                        System.out.println("Reset cancelled.");
+                    }
+                    break;
+
+                case 14:
                     // Exit
                     exit = true;
                     System.out.println("Exiting Hospital Management System. Goodbye!");
                     break;
 
                 default:
-                    System.out.println("Invalid option. Please select a number between 1 and 10.");
+                    System.out.println("Invalid option. Please select a number between 1 and 14.");
             }
 
             System.out.println();  // Add a blank line for readability

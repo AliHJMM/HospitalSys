@@ -74,9 +74,9 @@ public class Hospital {
 
     // Returns a Service object based on its ID
     public Service getService(String serviceId) {
-        for (Service service : servicesList) {
-            if (service.getServiceId().equals(serviceId)) {
-                return service;
+        for (int i = 0; i < servicesList.size(); i++) {
+            if (servicesList.get(i).getServiceId().equals(serviceId)) {
+                return servicesList.get(i);
             }
         }
         return null;  // Not found  
@@ -100,8 +100,8 @@ public class Hospital {
         if (patientsList.isEmpty()) {
             System.out.println("No patients registered.");
         } else {
-            for (Patient patient : patientsList) {
-                System.out.println(patient);
+            for (int i = 0; i < patientsList.size(); i++) {
+                System.out.println(patientsList.get(i));
                 System.out.println("---------------------------");
             }
         }
@@ -112,10 +112,39 @@ public class Hospital {
         if (servicesList.isEmpty()) {
             System.out.println("No services available.");
         } else {
-            for (Service service : servicesList) {
-                System.out.println(service);
+            for (int i = 0; i < servicesList.size(); i++) {
+                System.out.println(servicesList.get(i));
                 System.out.println("---------------------------");
             }
         }
+    }
+
+    // New method to get total number of patients
+    public int getTotalPatients() {
+        return patientsList.size();
+    }
+
+    // New method to get total number of services
+    public int getTotalServices() {
+        return servicesList.size();
+    }
+
+    // New method to calculate total revenue
+    public double calculateTotalRevenue() {
+        double totalRevenue = 0.0;
+        for (int i = 0; i < patientsList.size(); i++) {
+            Patient patient = patientsList.get(i);
+            for (int j = 0; j < patient.getServicesReceived().size(); j++) {
+                totalRevenue += patient.getServicesReceived().get(j).getCost();
+            }
+        }
+        return totalRevenue;
+    }
+
+    // New method to reset the system
+    public void resetSystem() {
+        patientsList.clear();
+        servicesList.clear();
+        size = 0;
     }
 }

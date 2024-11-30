@@ -89,17 +89,12 @@ public class Patient {
         this.servicesReceived = servicesReceived;
     }
 
-    // Equals method to compare patients by patientId  
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
+    // Equals method to compare patients by patientId
+    public boolean equals(Patient otherPatient) {
+        if (otherPatient == null) {
             return false;
         }
-        Patient patient = (Patient) obj;
-        return patientId == patient.patientId;
+        return this.patientId == otherPatient.patientId;
     }
 
     // printMedicalHistory method to display medical records  
@@ -108,8 +103,8 @@ public class Patient {
         if (medicalHistory.isEmpty()) {
             System.out.println("No medical history available.");
         } else {
-            for (String record : medicalHistory) {
-                System.out.println("- " + record);
+            for (int i = 0; i < medicalHistory.size(); i++) {
+                System.out.println("- " + medicalHistory.get(i));
             }
         }
     }
@@ -121,15 +116,14 @@ public class Patient {
         if (servicesReceived.isEmpty()) {
             System.out.println("No services received.");
         } else {
-            for (Service service : servicesReceived) {
-                System.out.println(service);
+            for (int i = 0; i < servicesReceived.size(); i++) {
+                System.out.println(servicesReceived.get(i));
                 System.out.println("---------------------------");
             }
         }
     }
 
-    // toString method for displaying patient details  
-    @Override
+    // toString method for displaying patient details
     public String toString() {
         return "Patient ID: " + patientId +
                 "\nName: " + firstName + " " + lastName +
