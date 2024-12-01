@@ -9,18 +9,23 @@ import java.util.regex.Pattern;
 public class Main {
     // This Method Ensure Validated Input is an integer.
     public static int readInt(Scanner scanner, String prompt, int min, int max) {
-        int value;
+        int value; // VAIRABLE TO STORE USER INPUT
+        // WE DID INFINITE LOOP TO KEEP PROGRAM WORKING UNTIL USER ENTER VALID INPUT
         while (true) {
             System.out.print(prompt);
             try {
+                // READ INTEGER FROM USER
                 value = scanner.nextInt();
                 scanner.nextLine();
+                // CHECK IF THE INPUT IS WITHIN RANGE
                 if (value >= min && value <= max) {
-                    return value;
+                    return value; // IF ITS WITHIN RANGE RETURN INPUT VALUE
                 } else {
+                    // IF INPUT IS NOT IN RANGE THEM PRINT MESSAGE SO USER ENTER VALID INPUT
                     System.out.println("Please enter a number between " + min + " and " + max + ".");
                 }
             } catch (InputMismatchException e) {
+                // IF INPUT NOT INTEGER THEN THROW A EXCEPTION
                 System.out.println("Invalid input. Please enter an integer.");
                 scanner.nextLine();
             }
@@ -28,18 +33,23 @@ public class Main {
     }
     // This Method Ensure Validated Input is long.
     public static long readLong(Scanner scanner, String prompt, long min, long max) {
-        long value;
+        long value; // VAIRABLE TO STORE USER INPUT
+        // WE DID INFINITE LOOP TO KEEP PROGRAM WORKING UNTIL USER ENTER VALID INPUT
         while (true) {
             System.out.print(prompt);
             try {
+                // READ LONG FROM USER
                 value = scanner.nextLong();
                 scanner.nextLine();
+                // CHECK IF THE INPUT IS WITHIN RANGE
                 if (value >= min && value <= max) {
-                    return value;
+                    return value; // IF ITS WITHIN RANGE RETURN INPUT VALUE
                 } else {
+                    // IF INPUT IS NOT IN RANGE THEM PRINT MESSAGE SO USER ENTER VALID INPUT
                     System.out.println("Please enter a number between " + min + " and " + max + ".");
                 }
             } catch (InputMismatchException e) {
+                // IF INPUT NOT LONG THEN THROW A EXCEPTION
                 System.out.println("Invalid input. Please enter a whole number.");
                 scanner.nextLine();
             }
@@ -47,18 +57,23 @@ public class Main {
     }
     // This Method Ensure Validated Input is Double.
     public static double readDouble(Scanner scanner, String prompt, double min, double max) {
-        double value;
+        double value; // VAIRABLE TO STORE USER INPUT
+        // WE DID INFINITE LOOP TO KEEP PROGRAM WORKING UNTIL USER ENTER VALID INPUT
         while (true) {
             System.out.print(prompt);
             try {
+                // READ DOUBLE FROM USER
                 value = scanner.nextDouble();
                 scanner.nextLine();
+                // CHECK IF THE INPUT IS WITHIN RANGE
                 if (value >= min && value <= max) {
-                    return value;
+                    return value; // IF ITS WITHIN RANGE RETURN INPUT VALUE
                 } else {
+                    // IF INPUT IS NOT IN RANGE THEM PRINT MESSAGE SO USER ENTER VALID INPUT
                     System.out.println("Please enter a number between " + min + " and " + max + ".");
                 }
             } catch (InputMismatchException e) {
+                // IF INPUT NOT DOUBLE THEN THROW A EXCEPTION
                 System.out.println("Invalid input. Please enter a decimal number.");
                 scanner.nextLine();
             }
@@ -66,52 +81,74 @@ public class Main {
     }
     // This Method Ensure Validated Input is either M for Male or F for Female.
     public static char readGender(Scanner scanner, String prompt) {
+        // WE DID INFINITE LOOP TO KEEP PROGRAM WORKING UNTIL USER ENTER VALID INPUT
         while (true) {
             System.out.print(prompt);
+            // READ STRING AND MAKE IT UPPERCASE
             String input = scanner.nextLine().trim().toUpperCase();
+            // CHECK INPUT IF ITS EITHER M FOR MALE OR F FOR FEMALE
             if (input.length() == 1 && (input.charAt(0) == 'M' || input.charAt(0) == 'F')) {
                 return input.charAt(0);
             } else {
+//                PRINT MESSAGE IF ITS NOT EITHER M OR F
                 System.out.println("Invalid input. Please enter 'M' or 'F'.");
             }
         }
     }
     // This Method Ensure Validated Input is not empty.
     public static String readNonEmptyString(Scanner scanner, String prompt) {
+        // WE DID INFINITE LOOP TO KEEP PROGRAM WORKING UNTIL USER ENTER VALID INPUT
         while (true) {
             System.out.print(prompt);
+//             // READ STRING AND TRIMMED
             String input = scanner.nextLine().trim();
+//            IF THE USER INPUT IS NOT EMPTY THEN RETURN THE INPUT ITSELF
             if (!input.isEmpty()) {
                 return input;
             } else {
+                // IF ITS EMPTY THEN PRINT A ERROR MESSAGE
                 System.out.println("Input cannot be empty. Please enter a valid value.");
             }
         }
     }
     // This Method Ensure Validated Input is an Email by using Regex to do some conditions.
     public static String readEmail(Scanner scanner, String prompt) {
+//        WE USED REGEX FOR EMAIL INPUT SO WE MAKE SURE USER ENTER VALID EMAIL
         String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,}$";
+        // COMPILE REGEX PATTERN
         Pattern pattern = Pattern.compile(emailRegex);
+        // WE DID INFINITE LOOP TO KEEP PROGRAM WORKING UNTIL USER ENTER VALID INPUT
         while (true) {
             System.out.print(prompt);
+            // READ INPUT AND TRIM ANY SPACE
             String email = scanner.nextLine().trim();
+            // CHECK IF EMAIL MATCH THE REGEX
+            // IF SO THEN RETURN VALID EMAIL
             if (pattern.matcher(email).matches()) {
                 return email;
             } else {
+                // IF IT DID NOT MATCH THE REGEX THEN PRINT ERROR MESSAGE AND ASK AGAIN
                 System.out.println("Invalid email format. Please enter a valid email address.");
             }
         }
     }
     // This Method Ensure Validated Input is consist of letters only with no numbers.
     public static String readName(Scanner scanner, String prompt) {
+        // WE USED REGEX FOR NAME INPUT SO WE MAKE SURE USER ENTER VALID INPUT ONLY LETTERS
         String nameRegex = "^[a-zA-Z]+$";
+        // COMPILE REGEX PATTERN
         Pattern pattern = Pattern.compile(nameRegex);
+        // WE DID INFINITE LOOP TO KEEP PROGRAM WORKING UNTIL USER ENTER VALID INPUT
         while (true) {
             System.out.print(prompt);
+            // READ INPUT AND TRIM ANY SPACE
             String name = scanner.nextLine().trim();
+            // CHECK IF INPUT MATCH THE REGEX
+            // IF SO THEN RETURN VALID NAME
             if (pattern.matcher(name).matches()) {
                 return name;
             } else {
+                // IF IT DID NOT MATCH THE REGEX THEN PRINT ERROR MESSAGE AND ASK AGAIN
                 System.out.println("Invalid input. Name must contain only letters.");
             }
         }
