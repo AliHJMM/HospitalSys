@@ -21,7 +21,7 @@ public class Hospital {
     public boolean addPatient(Patient patient) {
         if (patientsList.contains(patient)) {
             return false;  // Patient already exists  
-        } else {
+        } else {  //else we will add a patient
             patientsList.add(patient);
             size++;
             return true;
@@ -31,19 +31,19 @@ public class Hospital {
     // This Method Deletes a Patient from patientsList by patientId and returns true if removed.
     public boolean deletePatient(long patientId) {
         int index = searchPatient(patientId);
-        if (index != -1) {
+        if (index != -1) { // the patient is found
             patientsList.remove(index);
             size--;
             return true;
         } else {
-            return false;  // Patient not found  
+            return false;  // patient not found
         }
     }
 
     // This Method Searches for a Patient in patientsList by patientId and returns index if found.
     public int searchPatient(long patientId) {
         for (int i = 0; i < patientsList.size(); i++) {
-            if (patientsList.get(i).getPatientId() == patientId) {
+            if (patientsList.get(i).getPatientId() == patientId) { //if found return index
                 return i;
             }
         }
@@ -62,7 +62,7 @@ public class Hospital {
 
     // This Method Returns the Patient at the specified index in patientsList and returns patient if index is valid.
     public Patient getPatient(int index) {
-        if (index >= 0 && index < patientsList.size()) {
+        if (index >= 0 && index < patientsList.size()) { // validate the index
             return patientsList.get(index);
         } else {
             return null;  // Index is out of bounds
@@ -79,17 +79,17 @@ public class Hospital {
     // This Method Returns a Service from servicesList based on its ID and if its found return service.
     public Service getService(String serviceId) {
         for (int i = 0; i < servicesList.size(); i++) {
-            if (servicesList.get(i).getServiceId().equals(serviceId)) {
+            if (servicesList.get(i).getServiceId().equals(serviceId)) { // if found, return service
                 return servicesList.get(i);
             }
         }
-        return null;  // Not found  
+        return null;  // Not found, return null
     }
 
-    // This Method Prints details of a Patient including their medical history and services received and if not found print a error message.
+    // This Method Prints details of a Patient including their medical history and services received and if not found print an error message.
     public void printPatientDetails(long patientId) {
         int index = searchPatient(patientId);
-        if (index != -1) {
+        if (index != -1) { //if found
             Patient patient = patientsList.get(index);
             System.out.println(patient);
             patient.printMedicalHistory();
@@ -99,7 +99,7 @@ public class Hospital {
         }
     }
 
-    // This Method Print all patients in the patientsList and if list is empty print a error message.
+    // This Method Print all patients in the patientsList and if list is empty print an error message.
     public void printPatientList() {
         if (patientsList.isEmpty()) {
             System.out.println("No patients registered."); // No patients in the list
@@ -111,7 +111,7 @@ public class Hospital {
         }
     }
 
-    // This Method Prints all services in the servicesList and if list empty print a error message.
+    // This Method Prints all services in the servicesList and if list empty print an error message.
     public void printServiceList() {
         if (servicesList.isEmpty()) {
             System.out.println("No services available."); // No services in the list
@@ -136,9 +136,9 @@ public class Hospital {
     // This Method Calculate and return totalRevenue from all services received by patients & it loops through each patient services to calculate total cost.
     public double calculateTotalRevenue() {
         double totalRevenue = 0.0;
-        for (int i = 0; i < patientsList.size(); i++) {
+        for (int i = 0; i < patientsList.size(); i++) { // loop over patient list 
             Patient patient = patientsList.get(i);
-            for (int j = 0; j < patient.getServicesReceived().size(); j++) {
+            for (int j = 0; j < patient.getServicesReceived().size(); j++) {// inside the first loop this loop will iterate over services and add revenue
                 totalRevenue += patient.getServicesReceived().get(j).getCost();
             }
         }
