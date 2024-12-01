@@ -1,18 +1,20 @@
+//Ali Hasan Jasim 202200428
+//Habib Mansoor 202202669
+//Mohamed A.Karim 202207430
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Main {
-
-    // Helper methods for input validation
-
+    // This Method Ensure Validated Input is an integer.
     public static int readInt(Scanner scanner, String prompt, int min, int max) {
         int value;
         while (true) {
             System.out.print(prompt);
             try {
                 value = scanner.nextInt();
-                scanner.nextLine(); // consume the newline character
+                scanner.nextLine();
                 if (value >= min && value <= max) {
                     return value;
                 } else {
@@ -20,18 +22,18 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter an integer.");
-                scanner.nextLine(); // consume the invalid input
+                scanner.nextLine();
             }
         }
     }
-
+    // This Method Ensure Validated Input is long.
     public static long readLong(Scanner scanner, String prompt, long min, long max) {
         long value;
         while (true) {
             System.out.print(prompt);
             try {
                 value = scanner.nextLong();
-                scanner.nextLine(); // consume the newline character
+                scanner.nextLine();
                 if (value >= min && value <= max) {
                     return value;
                 } else {
@@ -39,18 +41,18 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a whole number.");
-                scanner.nextLine(); // consume the invalid input
+                scanner.nextLine();
             }
         }
     }
-
+    // This Method Ensure Validated Input is Double.
     public static double readDouble(Scanner scanner, String prompt, double min, double max) {
         double value;
         while (true) {
             System.out.print(prompt);
             try {
                 value = scanner.nextDouble();
-                scanner.nextLine(); // consume the newline character
+                scanner.nextLine();
                 if (value >= min && value <= max) {
                     return value;
                 } else {
@@ -58,11 +60,11 @@ public class Main {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a decimal number.");
-                scanner.nextLine(); // consume the invalid input
+                scanner.nextLine();
             }
         }
     }
-
+    // This Method Ensure Validated Input is either M for Male or F for Female.
     public static char readGender(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -74,7 +76,7 @@ public class Main {
             }
         }
     }
-
+    // This Method Ensure Validated Input is not empty.
     public static String readNonEmptyString(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -86,7 +88,7 @@ public class Main {
             }
         }
     }
-
+    // This Method Ensure Validated Input is an Email by using Regex to do some conditions.
     public static String readEmail(Scanner scanner, String prompt) {
         String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,}$";
         Pattern pattern = Pattern.compile(emailRegex);
@@ -100,7 +102,7 @@ public class Main {
             }
         }
     }
-
+    // This Method Ensure Validated Input is consist of letters only with no numbers.
     public static String readName(Scanner scanner, String prompt) {
         String nameRegex = "^[a-zA-Z]+$";
         Pattern pattern = Pattern.compile(nameRegex);
@@ -137,6 +139,8 @@ public class Main {
             System.out.println("12. View Total Revenue");
             System.out.println("13. Reset System");
             System.out.println("14. Exit");
+
+            // Read user choice from main menu.
             int choice = readInt(scanner, "Please select an option (1-14): ", 1, 14);
 
             switch (choice) {
@@ -256,7 +260,7 @@ public class Main {
                     break;
 
                 case 13:
-                    // Reset System
+                    // Reset the System
                     System.out.print("Are you sure you want to reset the system? (yes/no): ");
                     String confirm = scanner.nextLine().trim().toLowerCase();
                     if (confirm.equals("yes")) {
@@ -268,7 +272,7 @@ public class Main {
                     break;
 
                 case 14:
-                    // Exit
+                    // Exit the program
                     exit = true;
                     System.out.println("Exiting Hospital Management System. Goodbye!");
                     break;
@@ -277,7 +281,7 @@ public class Main {
                     System.out.println("Invalid option. Please select a number between 1 and 14.");
             }
 
-            System.out.println();  // Add a blank line for readability
+            System.out.println();  // Blank Line for better readability in terminal.
         }
 
         scanner.close();

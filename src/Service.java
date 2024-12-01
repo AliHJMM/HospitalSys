@@ -1,3 +1,7 @@
+//Ali Hasan Jasim 202200428
+//Habib Mansoor 202202669
+//Mohamed A.Karim 202207430
+
 public class Service {
     // Private Data Members
     private String serviceId;
@@ -53,15 +57,15 @@ public class Service {
         this.duration = duration;
     }
 
-    // Equals method to compare two services
-    public boolean equalsService(Service otherService) {
+    // This Method Compares Two Services by their ID
+    public boolean equals(Service otherService) {
         if (otherService == null) {
             return false;
         }
         return this.serviceId.equals(otherService.serviceId);
     }
 
-    // toString method for displaying service details
+    // This Method Returns Service Information to be Displayed.
     public String toString() {
         return "Service ID: " + serviceId +
                 "\nService Name: " + serviceName +

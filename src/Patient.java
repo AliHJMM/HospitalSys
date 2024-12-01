@@ -1,3 +1,7 @@
+//Ali Hasan Jasim 202200428
+//Habib Mansoor 202202669
+//Mohamed A.Karim 202207430
+
 import java.util.ArrayList;
 
 public class Patient {
@@ -89,7 +93,7 @@ public class Patient {
         this.servicesReceived = servicesReceived;
     }
 
-    // Equals method to compare patients by patientId
+    // This Method Compares Two Patients by their ID.
     public boolean equals(Patient otherPatient) {
         if (otherPatient == null) {
             return false;
@@ -97,7 +101,7 @@ public class Patient {
         return this.patientId == otherPatient.patientId;
     }
 
-    // printMedicalHistory method to display medical records  
+    // This Method Displays all the Medical Records in the medicalHistory List.
     public void printMedicalHistory() {
         System.out.println("Medical History for " + firstName + " " + lastName + ":");
         if (medicalHistory.isEmpty()) {
@@ -110,7 +114,8 @@ public class Patient {
     }
 
 
-    // printServicesReceived method to display services received  
+
+    // This Method Displays all the Services Received in the servicesReceived List.
     public void printServicesReceived() {
         System.out.println("Services Received by " + firstName + " " + lastName + ":");
         if (servicesReceived.isEmpty()) {
@@ -123,7 +128,7 @@ public class Patient {
         }
     }
 
-    // toString method for displaying patient details
+    // This Method Returns Patients Information to be Displayed.
     public String toString() {
         return "Patient ID: " + patientId +
                 "\nName: " + firstName + " " + lastName +

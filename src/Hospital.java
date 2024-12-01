@@ -1,3 +1,7 @@
+//Ali Hasan Jasim 202200428
+//Habib Mansoor 202202669
+//Mohamed A.Karim 202207430
+
 import java.util.LinkedList;
 
 public class Hospital {
@@ -13,7 +17,7 @@ public class Hospital {
         this.size = 0;
     }
 
-    // Adds a new Patient object to the patientsList
+    // This Method Adds a new Patient to the patientsList if the patient not already in the list.
     public boolean addPatient(Patient patient) {
         if (patientsList.contains(patient)) {
             return false;  // Patient already exists  
@@ -24,7 +28,7 @@ public class Hospital {
         }
     }
 
-    // Deletes a Patient by patientId
+    // This Method Deletes a Patient from patientsList by patientId and returns true if removed.
     public boolean deletePatient(long patientId) {
         int index = searchPatient(patientId);
         if (index != -1) {
@@ -36,7 +40,7 @@ public class Hospital {
         }
     }
 
-    // Searches for a Patient by patientId  
+    // This Method Searches for a Patient in patientsList by patientId and returns index if found.
     public int searchPatient(long patientId) {
         for (int i = 0; i < patientsList.size(); i++) {
             if (patientsList.get(i).getPatientId() == patientId) {
@@ -46,33 +50,33 @@ public class Hospital {
         return -1;  // Not found  
     }
 
-    // Returns true if patientsList is empty  
+    // This Method Returns true if there is no patients in the list.
     public boolean isEmpty() {
         return patientsList.isEmpty();
     }
 
-    // Returns the size of the patientsList
+    // This Method Returns number of patients in the patientsList.
     public int listSize() {
         return size;
     }
 
-    // Returns the Patient object at the specified index
+    // This Method Returns the Patient at the specified index in patientsList and returns patient if index is valid.
     public Patient getPatient(int index) {
         if (index >= 0 && index < patientsList.size()) {
             return patientsList.get(index);
         } else {
-            return null;  // Index out of bounds  
+            return null;  // Index is out of bounds
         }
     }
 
-    // Accepts a Service object and adds it to servicesList  
+    // This Method Adds a Service to the servicesList if it is not there.
     public void addService(Service service) {
         if (!servicesList.contains(service)) {
             servicesList.add(service);
         }
     }
 
-    // Returns a Service object based on its ID
+    // This Method Returns a Service from servicesList based on its ID and if its found return service.
     public Service getService(String serviceId) {
         for (int i = 0; i < servicesList.size(); i++) {
             if (servicesList.get(i).getServiceId().equals(serviceId)) {
@@ -82,7 +86,7 @@ public class Hospital {
         return null;  // Not found  
     }
 
-    // Prints details of a Patient including their medical history and services received
+    // This Method Prints details of a Patient including their medical history and services received and if not found print a error message.
     public void printPatientDetails(long patientId) {
         int index = searchPatient(patientId);
         if (index != -1) {
@@ -91,45 +95,45 @@ public class Hospital {
             patient.printMedicalHistory();
             patient.printServicesReceived();
         } else {
-            System.out.println("Patient not found.");
+            System.out.println("Patient not found."); // Patient ID not found
         }
     }
 
-    // Print all patients in the patientsList  
+    // This Method Print all patients in the patientsList and if list is empty print a error message.
     public void printPatientList() {
         if (patientsList.isEmpty()) {
-            System.out.println("No patients registered.");
+            System.out.println("No patients registered."); // No patients in the list
         } else {
             for (int i = 0; i < patientsList.size(); i++) {
                 System.out.println(patientsList.get(i));
-                System.out.println("---------------------------");
+                System.out.println("---------------------------"); // for better readability in terminal
             }
         }
     }
 
-    // Print all services in the servicesList  
+    // This Method Prints all services in the servicesList and if list empty print a error message.
     public void printServiceList() {
         if (servicesList.isEmpty()) {
-            System.out.println("No services available.");
+            System.out.println("No services available."); // No services in the list
         } else {
             for (int i = 0; i < servicesList.size(); i++) {
                 System.out.println(servicesList.get(i));
-                System.out.println("---------------------------");
+                System.out.println("---------------------------"); // for better readability in terminal
             }
         }
     }
 
-    // New method to get total number of patients
+    // This Method Returns  total number of patients in patientsList.
     public int getTotalPatients() {
         return patientsList.size();
     }
 
-    // New method to get total number of services
+    // This Method Returns number of services in servicesList.
     public int getTotalServices() {
         return servicesList.size();
     }
 
-    // New method to calculate total revenue
+    // This Method Calculate and return totalRevenue from all services received by patients & it loops through each patient services to calculate total cost.
     public double calculateTotalRevenue() {
         double totalRevenue = 0.0;
         for (int i = 0; i < patientsList.size(); i++) {
@@ -141,7 +145,7 @@ public class Hospital {
         return totalRevenue;
     }
 
-    // New method to reset the system
+    // This Method Reset the system by clearing the lists we have and set sizee to 0.
     public void resetSystem() {
         patientsList.clear();
         servicesList.clear();
